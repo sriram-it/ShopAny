@@ -1,0 +1,25 @@
+.container {
+    background-color: #5AB568;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    padding-left: 20px;
+}
+
+.searchBox{
+    width: 50%;
+}
+
+.searchBox input {
+    width: 100%;
+    padding: 10px;
+}
+
+.logout{
+    background-color: white;
+    color: #5AB568;
+    border: none;
+    padding: 10px;
+    font-weight: 600;
+}

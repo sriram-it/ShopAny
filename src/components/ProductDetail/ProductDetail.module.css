@@ -1,0 +1,63 @@
+#container{
+    display: flex;
+    justify-content: space-around;
+    /* margin: 5% 10% 5% 10%; */
+    margin: 5%;
+    padding: 5%;
+    background-color: white;
+    align-items: flex-start;
+}
+
+#image{
+    margin-top: 10%;
+}
+
+#content {
+    width: 45%;
+}
+
+#title{
+    margin-top: 5%;
+    font-size: 36pt;
+}
+
+#price{
+    color: #808080;
+    margin-top: 5%;
+}
+
+#aboutItemTitle{
+    margin-top: 10%;
+}
+
+#description{
+    margin-top: 3%;
+}
+
+#actionContainer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+#actionContainer button {
+    width: 48%;
+    margin: 2%;
+    background-color: #5AB568;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+#actionContainer button:hover{
+    background-color: white ;
+    color: #5AB568;
+    border: 1px solid #5AB568;
+    padding: 10px;
+    font-weight: 700;
+}
+
+li{
+    margin-top: 10px;
+}
+
