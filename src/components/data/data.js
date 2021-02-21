@@ -45,3 +45,15 @@ export var products = [
     {id: 24, name:'I Love You to the Moon', description: "Show a child just how strong your love is every minute of the day! Features a To and From personalization page, making this sweet offering an ideal gift for baby showers, birthdays, and new parents. <BULLET>The sun rises, and a bear and cub begin their day together. They splash in the water, climb mountains, watch the colorful lights in the shimmering sky, and play with friends. They show their love for each other by touching noses, chasing each other, and, of course, hugging and snuggling before bed. A sweet, gentle rhyme, perfect for sharing with a special little one that also includes a To and From personalization page in the front of the book, making this heartwarming book an ideal gift.", quantity:89, price: 27.99, categoryId: 5, sellerId: 1},
     {id: 25, name:'The Intelligent Investor', description: "This classic text is annotated to update Graham's timeless wisdom for today's market conditions.<BULLET>The greatest investment advisor of the twentieth century, Benjamin Graham, taught and inspired people worldwide. Graham's philosophy of value investing - which shields investors from substantial error and teaches them to develop long-term strategies - has made The Intelligent Investor the stock market bible ever since its original publication in 1949.<BULLET>Over the years, market developments have proven the wisdom of Graham's strategies. While preserving the integrity of Graham's original text, this revised edition includes updated commentary by noted financial journalist Jason Zweig, whose perspective incorporates the realities of today's market, draws parallels between Graham's examples and today's financial headlines, and gives readers a more thorough understanding of how to apply Graham's principles.<BULLET>Vital and indispensable, this HarperBusiness Essentials edition of The Intelligent Investor is the most important book you will ever read on how to reach your financial goals.", quantity:43, price: 14.99, categoryId: 5, sellerId: 1},
 ]
+
+export var sellers = [
+	{id: 1, name:'seller1', companyName: 'companyName1', password: 'password123', email:'user@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'},
+	{id: 2, name:'seller2', companyName: 'companyName2', password: 'password123', email:'user@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'},
+	{id: 3, name:'seller3', companyName: 'companyName3',password: 'password123', email:'user@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'}
+]
+
+//{id: orderId, userId: currentUserId, sellerId: currentSellerId, productId: currentProductId, status: 0, dateAndTime: new Date()}
+export var orders = []
+
+//export var currentUser = null;
+export var currentUser = {id: '1', name:'user1', password: 'password123', email:'user@abc.com', phoneNumber:'9876543210', address:'asdsakdhaskhdkjahs'}
