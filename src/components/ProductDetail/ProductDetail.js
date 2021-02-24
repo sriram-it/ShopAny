@@ -28,8 +28,8 @@ function ProductDetail ({match}) {
                                 <h4 id={Style.aboutItemTitle}>About the item:</h4>
                                 <ul id={Style.description}>{makePoints(selectedProduct.description)}</ul>
                                 <div id={Style.actionContainer}>
-                                    <button onClick={ () => addToCart(selectedProduct.id, selectedProduct.sellerId)}>Add to Cart</button>
-                                    <button>Buy</button>
+                                    <button onClick={ () => addToCartHandler(selectedProduct.id, selectedProduct.sellerId)}>Add to Cart</button>
+                                    <button onClick={ () => buyHandler(selectedProduct.id, selectedProduct.sellerId)}>Buy</button>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ function makePoints(description){
     return returnVal
 }
 
-let addToCart = function(currentProductId, currentSellerId){
+let addToOrder = function(currentProductId, currentSellerId){
     var currentUserId = parseInt(Data.currentUser.id)
     var orderId = 0
     var existOrder = null;
@@ -75,11 +75,64 @@ let addToCart = function(currentProductId, currentSellerId){
     if(Data.orders.length > 0) {
         orderId = Data.orders[Data.orders.length-1].id + 1
     } 
-    var currentOrder = {id: orderId, userId: currentUserId, sellerId: currentSellerId, productId: currentProductId, status: 0, dateAndTime: new Date()}
+    var currentOrder = {id: orderId, userId: currentUserId, sellerId: currentSellerId, productId: currentProductId, status: 1, dateAndTime: new Date()}
     Data.orders.push(currentOrder)
     console.log(Data.orders)
     //history.goBack()
     history.replace('/cart')
+}
+
+let addToCartHandler = function(currentProductId, currentSellerId) {
+    addToCart(currentProductId, currentSellerId)
+    history.replace('/cart')
+}
+
+let buyHandler = function(currentProductId, currentSellerId) {
+    let cartId = addToCart(currentProductId, currentSellerId)
+    history.replace(`/checkout/${cartId}`)
+}
+
+let addToCart = function(currentProductId, currentSellerId){
+    var currentUserId = parseInt(Data.currentUser.id)
+    var cartId = 0
+    var existOnCart = null;
+
+    //Check the Product Already Added in the Cart
+    existOnCart = isProductExistOnCart(currentProductId)
+    if(existOnCart != null) {
+        alert("Product Already Added in the Cart")
+        return
+    } 
+
+    //Make new order
+    if(Data.cart.length > 0) {
+        cartId = Data.cart[Data.cart.length-1].id + 1
+    } 
+    var productInfo = getObject(currentProductId, Data.products)
+    var sellerDetails = getObject(currentSellerId, Data.sellers)
+    var productToCart = {id: cartId, userId: currentUserId, productId: productInfo.id, productName: productInfo.name, productPrice: productInfo.price, sellerName: sellerDetails.name, sellerCompanyName: sellerDetails.companyName, status: 1}
+    Data.cart.push(productToCart)
+    console.log(Data.cart)
+    return productToCart.id
+}
+
+function getObject(id, objects) {
+    for(let i = 0; i < objects.length; i++) {
+        if(objects[i].id == id) {
+            return objects[i]
+        }
+    }
+    return null
+}
+
+function isProductExistOnCart(currentProductId){
+    var cart = Data.cart
+    for(let i = 0; i < cart.length; i++) {
+        if(cart[i].productId == currentProductId) {
+            return cart[i]
+        }
+    }
+    return null
 }
 
 function isOrderAlreadyExist(currentProductId){

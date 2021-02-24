@@ -16,6 +16,16 @@
     padding: 10px;
 }
 
+.actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 12%;
+}
+
+#cartIcon, #orderIcon{
+    color: white;
+}
 .logout{
     background-color: white;
     color: #5AB568;
