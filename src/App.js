@@ -5,6 +5,7 @@ import ProductDetail from './components/ProductDetail/ProductDetail';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import Order from './components/Order/Order';
+import Category from './components/Category/Category';
 
 
 function App() { 
@@ -18,6 +19,8 @@ function App() {
         <Route path="/order" component={Order}/>
         <Route path="/checkout" component={Checkout} exact/>
         <Route path="/checkout/:cartId" component={Checkout}/>
+
+        <Route path="/category" component={Category}/>
       </Switch>
     </div>
   );

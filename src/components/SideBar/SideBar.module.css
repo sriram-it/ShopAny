@@ -1,0 +1,20 @@
+.container{
+    background-color: white;
+    width: 280px;
+    height: 100vh;
+}
+
+.container li {
+    padding: 6%;
+}
+
+
+.container li:hover {
+    background-color: #9CD2A4;
+    color: white;
+}
+
+.activeTab{
+    background-color: #5AB568;
+    color:white;
+}

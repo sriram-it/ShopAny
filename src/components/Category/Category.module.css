@@ -1,0 +1,84 @@
+.root{
+    display: flex;
+}
+
+.container{
+    margin: 2% 5%;
+}
+
+
+.title{
+
+}
+
+.list{
+    width: 60vw;
+    margin-top: 5%;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actions button{
+    width: 50px;
+    height: 30px;
+    background-color: #5AB568;
+    color: white;
+    border: none;
+}
+
+.listItem{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 100px;
+    margin-bottom: 2%;
+}
+
+.modal{
+    width: 500px;
+    height: 200px;
+    background-color: white;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.modalHeader{
+    margin: 20px;
+}
+
+.modalBody{
+    margin: 20px;
+}
+
+.modalBody input{
+    width: 90%;
+    margin: 9px;
+    padding: 10px;
+}
+
+.modalFooter{
+    margin: 20px;
+}
+
+.modalFooter button{
+    /* margin: 10px; */
+    width: 50px;
+    height: 30px;
+    background-color: #5AB568;
+    color: white;
+    border: none;
+    margin: 0px 20px;
+}
+
+
+.modalContainer{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around; */
+}

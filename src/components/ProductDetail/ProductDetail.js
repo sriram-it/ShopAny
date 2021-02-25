@@ -54,7 +54,7 @@ function makePoints(description){
     let points = description.split("<BULLET>")
     let returnVal = []
     for(let i = 0; i<points.length; i++) {
-         returnVal.push(<li key={points[i]}>{points[i]}</li>)
+         returnVal.push(<li key={points[i]} className={Style.bulletsPoints}>{points[i]}</li>)
     }
     return returnVal
 }

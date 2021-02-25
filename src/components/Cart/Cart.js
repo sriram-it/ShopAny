@@ -34,7 +34,7 @@ function Cart() {
         let updatedArray = Array.from(cartDetails)
         let cartDetail = cartDetails[index]
         let orderStatus = cartDetails[index].status == 0 ? 1 : 0
-        updatedArray.splice(index, 1, {id: cartDetail.id, userId: cartDetail.userId, productId: cartDetail.productId, productName: cartDetail.productName, productPrice: cartDetail.productPrice, sellerName: cartDetail.sellerName, sellerCompanyName: cartDetail.sellerCompanyName, status: orderStatus})
+        updatedArray.splice(index, 1, {id: cartDetail.id, userId: cartDetail.userId, productId: cartDetail.productId, productName: cartDetail.productName, productPrice: cartDetail.productPrice, sellerName: cartDetail.sellerName, sellerCompanyName: cartDetail.sellerCompanyName, status: orderStatus, })
         setCartDetails(updatedArray)
     }
 
@@ -95,14 +95,14 @@ function Cart() {
                     )
                 })
             }
-        <div className={Style.summaryContainer}>
-            <h2>Total Price</h2>
-            <h2>{`$${totalPrice.toFixed(2)}`}</h2>
+            <div className={Style.summaryContainer}>
+                <h2>Total Price</h2>
+                <h2>{`$${totalPrice.toFixed(2)}`}</h2>
+            </div>
+            <div className={Style.actions}>
+                <center><Link to="/checkout"><button>Proceed to checkout</button></Link></center>
+            </div>
         </div>
-        <div className={Style.actions}>
-            <center><Link to="/checkout"><button>Proceed to checkout</button></Link></center>
-        </div>
-    </div>
     )
 }
 

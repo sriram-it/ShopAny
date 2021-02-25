@@ -55,7 +55,7 @@ export var sellers = [
 //{id: cartId, productId: productInfo.id, productName: productInfo.name, productPrice: productInfo.price, sellerName: sellerDetails.name, sellerCompanyName: sellerDetails.companyName, status: 0 || 1}
 export var cart = []
 
-//{id: orderId, userId: currentUserId, sellerId: currentSellerId, productId: currentProductId, status: 0, dateAndTime: new Date()}
+//{id: orderId, productId: productInfo.id, productName: productInfo.name, productPrice: productInfo.price, sellerName: sellerDetails.name, sellerCompanyName: sellerDetails.companyName, status: 0 || 1, placedDate: new Date(), DeliveryDate: new Date()}
 export var orders = []
 
 
