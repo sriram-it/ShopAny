@@ -10,12 +10,22 @@ function Order(){
     useEffect(()=>{
         let tempOrder = []
         for(let i=0; i < Data.orders.length; i++) {
-            if(Data.orders[i].userId == Data.currentUser.id) {
+            if(Data.orders[i].userId == Data.currentUser[0].id) {
                 tempOrder.push(Data.orders[i])
             }
         }
         setOrders(tempOrder)
     }, [])
+
+    function formatDate(dateValue) {
+        let formattedDate = null
+        if(typeof(dateValue) == "string") {
+            formattedDate = new Date(dateValue.replace(/-/g, '\/')).toLocaleDateString("en-US")
+        } else {
+            formattedDate = dateValue.toLocaleDateString("en-US")
+        }
+        return formattedDate
+    }
 
     return(
         // <div>
@@ -36,16 +46,22 @@ function Order(){
                         return (
                         <div key={order.id} className={Style.listContainer}>
                             <div className={Style.contentContainer}>
-                                <img src={`/images/${order.productId}.jpg`} width="200px" height="200px"></img>
                                 <div>
-                                    <h2>{order.productName}</h2>
-                                    <h3>{order.sellerCompanyName}</h3>
-                                    <h4>{order.sellerName}</h4>
+                                    <img src={`/images/${order.productId}.jpg`} width="200px" height="200px"></img>
                                 </div>
                                 <div>
-                                    <h2>{`$${order.productPrice}`}</h2>
+                                    <p className={Style.fields}>{`Product Name: ${order.productName}`}</p>
+                                    <p className={Style.fields}>{`Product Price: $${parseFloat(order.productPrice).toFixed(2)}`}</p>
+                                    <p className={Style.fields}>{`Customer Name: ${order.userName}`}</p>
+                                    <p className={Style.fields}>{`Customer Email: ${order.userEmail}`}</p>
                                 </div>
-                            </div>
+                                <div>
+                                    <p className={Style.fields}>{`Order Id: ${order.id}`}</p>
+                                    <p className={Style.fields} style={{color:'green', fontWeight: 650}}>{`Status: ${Data.orderStatus[order.status-1].name}`}</p>
+                                    <p className={Style.fields}>{`Placed Date: ${formatDate(order.placedDate)}`}</p>
+                                    <p className={Style.fields} style={{color:'blue', fontWeight: 650}} >{`Delivery Date: ${formatDate(order.deliveryDate)}`}</p>
+                                </div>
+                            </div>  
                         </div>
                         )
                     })

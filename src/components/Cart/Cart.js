@@ -3,18 +3,22 @@ import Style from '../Cart/Cart.module.css'
 import * as Data from '../data/data'
 import TabBar from '../TabBar/TabBar'
 import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 
 
 function Cart() {
     var [cartDetails, setCartDetails] = useState([])
     var [totalPrice, setTotalPrice] = useState(0.0)
+    var [cartIds, setCartIds] = useState("")
+    var history = useHistory()
+
 
     useEffect(()=>{
         let tempCartDetails = []
         let totPrice = 0.0
         for(let i=0; i < Data.cart.length; i++) {
-            if(Data.cart[i].userId == Data.currentUser.id) {
+            if(Data.cart[i].userId == Data.currentUser[0].id) {
                 tempCartDetails.push(Data.cart[i])
                 totPrice += Data.cart[i].productPrice
             }
@@ -24,7 +28,13 @@ function Cart() {
     }, [])
 
      useEffect(() => {
+         let tempCartIds = ""
          calculateTotalPrice()
+         for(let i = 0; i < cartDetails.length; i++) {
+            tempCartIds += `${cartDetails[i].id}~`
+         }
+         console.log(tempCartIds)
+         setCartIds(tempCartIds)
          return (()=> {
              updateCartStatus()
          })
@@ -70,6 +80,10 @@ function Cart() {
         return index
     }
 
+    const proceedToCheckOut = () => {
+        history.replace(`/checkout/${cartIds}/0`)
+    }
+
     return(
         <div>
         <TabBar isSearchHide={true}/>  
@@ -83,12 +97,12 @@ function Cart() {
                             <input type="checkbox" className={Style.checkBox} checked={cartDetail.status == 1} onChange={(event)=>{onCheckHandler(index)}} />
                             <img src={`/images/${cartDetail.productId}.jpg`} width="200px" height="200px"></img>
                             <div>
-                                <h2>{cartDetail.productName}</h2>
-                                <h3>{cartDetail.sellerCompanyName}</h3>
-                                <h4>{cartDetail.sellerName}</h4>
+                                <h2 className={Style.fields}>{cartDetail.productName}</h2>
+                                <p className={Style.fields}>{cartDetail.sellerCompanyName}</p>
+                                <p className={Style.fields}>{cartDetail.sellerName}</p>
                             </div>
                             <div>
-                                <h2>{`$${cartDetail.productPrice}`}</h2>
+                                <h2 style={{color:'grey'}}>{`$${parseFloat(cartDetail.productPrice).toFixed(2)}`}</h2>
                             </div>
                         </div>
                     </div>
@@ -97,10 +111,10 @@ function Cart() {
             }
             <div className={Style.summaryContainer}>
                 <h2>Total Price</h2>
-                <h2>{`$${totalPrice.toFixed(2)}`}</h2>
+                <h2 style={{color: '#f44336'}}>{`$${parseFloat(totalPrice).toFixed(2)}`}</h2>
             </div>
             <div className={Style.actions}>
-                <center><Link to="/checkout"><button>Proceed to checkout</button></Link></center>
+                <center><button onClick={()=>{proceedToCheckOut()}}>Proceed to checkout</button></center>
             </div>
         </div>
     )

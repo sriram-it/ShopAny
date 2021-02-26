@@ -19,16 +19,16 @@ function Filter ({categoryHandler, sortHandler}){
     return (
         <div className={Style.container}>
             <div>
-                <label htmlFor="categories">Categories</label>
-                <select name="categories" ref={categoryNode} onChange={(e)=>categoryLocalHandler(e)}>
+                <label htmlFor="categories" className={Style.containerLabel}>Categories</label>
+                <select name="categories" ref={categoryNode} onChange={(e)=>categoryLocalHandler(e)} className={Style.containerSelect}>
                     {Data.categories.map(category => {
                         return <option key={category.name} value={category.id}>{category.name}</option>
                     })}
                 </select>
             </div>
             <div>
-                <label htmlFor="sort">Sort</label>
-                <select name="sort" ref={sortNode} onChange={(event)=>sortHandler(event.target.value)}>
+                <label htmlFor="sort" className={Style.containerLabel}>Sort</label>
+                <select name="sort" ref={sortNode} onChange={(event)=>sortHandler(event.target.value)} className={Style.containerSelect}>
                     <option value={0}>No Preference</option>
                     <option value={1}>Lowest First</option>
                     <option value={2}>Highest First</option>

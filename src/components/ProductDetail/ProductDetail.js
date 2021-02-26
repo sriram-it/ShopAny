@@ -60,7 +60,7 @@ function makePoints(description){
 }
 
 let addToOrder = function(currentProductId, currentSellerId){
-    var currentUserId = parseInt(Data.currentUser.id)
+    var currentUserId = parseInt(Data.currentUser[0].id)
     var orderId = 0
     var existOrder = null;
 
@@ -89,11 +89,11 @@ let addToCartHandler = function(currentProductId, currentSellerId) {
 
 let buyHandler = function(currentProductId, currentSellerId) {
     let cartId = addToCart(currentProductId, currentSellerId)
-    history.replace(`/checkout/${cartId}`)
+    history.replace(`/checkout/${cartId}/1`)
 }
 
 let addToCart = function(currentProductId, currentSellerId){
-    var currentUserId = parseInt(Data.currentUser.id)
+    var currentUserId = parseInt(Data.currentUser[0].id)
     var cartId = 0
     var existOnCart = null;
 
@@ -110,7 +110,7 @@ let addToCart = function(currentProductId, currentSellerId){
     } 
     var productInfo = getObject(currentProductId, Data.products)
     var sellerDetails = getObject(currentSellerId, Data.sellers)
-    var productToCart = {id: cartId, userId: currentUserId, productId: productInfo.id, productName: productInfo.name, productPrice: productInfo.price, sellerName: sellerDetails.name, sellerCompanyName: sellerDetails.companyName, status: 1}
+    var productToCart = {id: cartId, userId: currentUserId, productId: productInfo.id, productName: productInfo.name, productPrice: productInfo.price, sellerId: sellerDetails.id, sellerName: sellerDetails.name, sellerCompanyName: sellerDetails.companyName, status: 1}
     Data.cart.push(productToCart)
     console.log(Data.cart)
     return productToCart.id

@@ -1,0 +1,166 @@
+/* Reset styles */
+/* body {
+  
+}
+html,body, body * {
+  
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif ;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background-color: inherit;
+  /* border: 2px solid orange; 
+} */
+/* 5 */
+.container {
+  background-image: url(bg.png);
+  background-position: top;
+  background-size: cover;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 100px;
+}
+.login-register-wrapper{
+  height: 700px;
+  width: 600px;
+  /* margin-left: 59%;
+  margin-right: auto;
+   */
+  padding: 0 2em;
+  border-radius: 5px;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(180deg, rgba(143,210,105,1) 0%, rgba(90,181,104,1) 50%, rgba(143,210,105,1) 100%);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/* nav-buttons */
+.nav-buttons{
+  width: 100%;
+  height: 100px;
+  padding-top: 40px;
+  opacity: 1;
+  margin-bottom: 2em;
+  color: black;
+  font-weight: 700;
+}
+.buttons {
+  font-size: 1.5em;
+  margin-right: 1em;
+  border: 0px;
+  cursor: pointer;
+  background-color: inherit;
+}
+.buttons:focus{
+  outline: 0px;
+}
+.buttons:active {
+  padding-bottom: 10px;
+  border-bottom: solid 2px gray;
+}
+
+/* forgot panel */
+.forgot-panel {
+  position: relative;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 24px;
+  border-top: solid 1px rgba(255, 255, 255, .3);
+}
+.forgot-panel a{
+  color: black;
+}
+/* form styling */
+.form-group-input {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background:rgba(255, 255, 255, .2);
+  display: block;
+}
+
+.form-group-input-hidden{
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background:rgba(255, 255, 255, .2);
+  display: none;
+}
+
+.form-group-label {
+  text-transform: uppercase;
+  color: black;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 1px white;
+    font-weight: 700;
+  display: block;
+}
+
+.form-group-label-hidden {
+  text-transform: uppercase;
+  color: black;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 1px white;
+    font-weight: 700;
+  display: none;
+}
+.submitBtn {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1em;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  padding: 8px 0px;
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 23px;
+  background-color: rgb(21, 31, 56);
+}
+
+/* Form positioning and animation */
+
+#registerform {
+  left: 500px;
+  top: -230px;
+  position: relative;
+}
+
+#loginform{
+  left: 500px;
+  top: 0px;
+  position: relative;
+}
+
+#sellerBtn{
+  left: 500px;
+  top: -230px;
+  position: relative;
+}
+
+.forgot-panel {
+  margin-top: -300px;
+  color: gray;
+}
+.forms .forgot-panel {
+  position: relative;
+  transition: all .2s ease;
+}
+#loginBtn, #registerBtn {
+  transition: all .2s ease;
+}

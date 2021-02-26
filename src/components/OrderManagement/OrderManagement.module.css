@@ -42,13 +42,14 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
-    padding: 30px 100px;
+    align-items: center;
     margin-bottom: 2%;
+    padding: 30px 30px;
 }
 
 .modal{
     width: 500px;
-    height: 200px;
+    height: 320px;
     background-color: white;
     position: absolute;
     top:50%;
@@ -64,14 +65,28 @@
     margin: 20px;
 }
 
-.modalBody input{
-    width: 90%;
+.fields{
+    width: 50%;
     margin: 9px;
     padding: 10px;
+    border: 1px solid black;
+}
+
+.fieldContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.modalFormContainer{
+    width: 70%;
 }
 
 .modalFooter{
-    margin: 20px;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .modalFooter button{

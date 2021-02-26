@@ -5,19 +5,31 @@ import Style from '../Checkout/Checkout.module.css'
 
 function Checkout({match}) {
     let cartId = match.params.cartId
-
+    let navfrom = match.params.navfrom
 
     const placeOrder = function() {
-        if(cartId) {
+        console.log(navfrom)
+        if(cartId != null && navfrom == 1) {
             let cartObject = getObject(cartId, Data.cart)
-            let currentUserId = parseInt(Data.currentUser.id)
+            let productInfo = getObject(cartObject.productId, Data.products)
+            let currentUserId = parseInt(Data.currentUser[0].id)
             let orderId = 0
             if(Data.orders.length > 0) {
                 orderId = Data.orders[Data.orders.length-1].id + 1
             } 
-            Data.orders.push({id: orderId, userId: currentUserId, productId: cartObject.productId, productName: cartObject.productName, productPrice: cartObject.productPrice, sellerName: cartObject.sellerName, sellerCompanyName: cartObject.sellerCompanyName, status: 1, placedDate: new Date(), DeliveryDate: new Date()})
-        } else {
-
+            Data.orders.push({id: orderId, userId: currentUserId, userName: Data.currentUser[0].name, userEmail: Data.currentUser[0].email , productId: cartObject.productId, productName: cartObject.productName, productPrice: cartObject.productPrice, categoryId: productInfo.categoryId, sellerId: cartObject.sellerId, sellerName: cartObject.sellerName, sellerCompanyName: cartObject.sellerCompanyName, status: 1, placedDate: new Date(), deliveryDate: new Date()})
+        } else if(cartId != null && navfrom == 0) {
+            let cartIds = cartId.split('~')
+            for(let i=0; i< cartIds.length-1; i++) {
+                let cartObject = getObject(cartIds[i], Data.cart)
+                let productInfo = getObject(cartObject.productId, Data.products)
+                let currentUserId = parseInt(Data.currentUser[0].id)
+                let orderId = 0
+                if(Data.orders.length > 0) {
+                    orderId = Data.orders[Data.orders.length-1].id + 1
+                } 
+                Data.orders.push({id: orderId, userId: currentUserId, userName: Data.currentUser[0].name, userEmail: Data.currentUser[0].email , productId: cartObject.productId, productName: cartObject.productName, productPrice: cartObject.productPrice, categoryId: productInfo.categoryId, sellerId: cartObject.sellerId, sellerName: cartObject.sellerName, sellerCompanyName: cartObject.sellerCompanyName, status: 1, placedDate: new Date(), deliveryDate: new Date()})
+            }
         }
     }
 

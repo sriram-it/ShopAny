@@ -100,7 +100,7 @@ function Product () {
                             <img src={`/images/${product.id}.jpg`} width="150px" height="150px" className={Style.productImage}/>
                             <div>
                                 <h2 className ={Style.productName}>{product.name}</h2>
-                                <h3 className = {Style.price}>{`$${product.price}`}</h3>
+                                <h3 className = {Style.price}>{`$${parseFloat(product.price).toFixed(2)}`}</h3>
                             </div>
                             <Link to={`/productDetail/${product.id}`}>
                                 <button className = {Style.view}>View Product</button>

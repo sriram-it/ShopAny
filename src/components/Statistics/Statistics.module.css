@@ -1,0 +1,9 @@
+.root{
+    display: flex;
+    margin-top: 4%;
+    margin-left: 18%;
+}
+
+.categoryChartContainer{
+    width: 50%;
+}

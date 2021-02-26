@@ -5,10 +5,10 @@
    background-color: white;
 }
 
-label{
+.containerLabel{
     margin-right: 20px;
 }
 
-select {
+.containerSelect {
     padding: 5px;
 }

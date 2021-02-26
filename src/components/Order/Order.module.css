@@ -47,5 +47,12 @@ img{
     font-weight: 700;
 }
 
+.fields{
+    margin-bottom: 10px;
+}
 
+.expectedDateField
 
+.statusField{
+    color: green;
+}
