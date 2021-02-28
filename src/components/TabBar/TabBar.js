@@ -25,7 +25,7 @@ function TabBar(props) {
         <div className={Style.container}>
             <h2 className={Style.logo}><AiOutlineShoppingCart className={Style.icon}/> ShopAny</h2>
             <div className={Style.searchBox}>
-                <input type="textbox"  style={props.isSearchHide  ? {display: 'none'} : {display: 'block'}} placeholder="Enter the product name to find" onChange={(event) => props.searchHandler(event.target.value)}></input>
+                <input type="textbox"  style={props.isSearchHide  ? {display: 'none'} : {display: 'block'}} placeholder={ Data.currentUser[0].userType == 0 ? "Enter the product name to find" : "Enter the customer email to find"} onChange={(event) => props.searchHandler(event.target.value)}></input>
             </div>
             <div className={Style.actions}>
                 <h2><Link to="/cart"><FiShoppingBag id={Style.cartIcon}></FiShoppingBag></Link></h2>

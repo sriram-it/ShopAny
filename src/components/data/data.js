@@ -47,9 +47,9 @@ export var products = [
 ]
 
 export var sellers = [
-	{id: 1, name:'seller1', companyName: 'companyName1', password: 'password123', email:'user@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'},
-	{id: 2, name:'seller2', companyName: 'companyName2', password: 'password123', email:'user@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'},
-	{id: 3, name:'seller3', companyName: 'companyName3',password: 'password123', email:'user@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'}
+    {id: 1, name:'Mark', companyName: 'Marks Shoppers', password: 'password123', email:'sel1@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'},
+	{id: 2, name:'Simith', companyName: 'Hanko Private Limited', password: 'password123', email:'sel2@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'},
+	{id: 3, name:'Ralph', companyName: 'Alpha Store', password: 'password123', email:'sel3@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs'}
 ]
 
 //{id: cartId, productId: productInfo.id, productName: productInfo.name, productPrice: productInfo.price, sellerName: sellerDetails.name, sellerCompanyName: sellerDetails.companyName, status: 0 || 1}
@@ -59,9 +59,12 @@ export var cart = []
 export var orders = []
 
 export var users = [
-    {id: 1, name:'seller1', password: 'password123', email:'user@abc1.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 1},
-	{id: 2, name:'seller2', password: 'password123', email:'user@abc2.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 1},
-	{id: 3, name:'seller3', password: 'password123', email:'user@abc3.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 1}
+    {id: 1, name:'Mark', password: 'pass123', email:'sel1@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 1},
+	{id: 2, name:'Simith', password: 'pass123', email:'sel2@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 1},
+	{id: 3, name:'Ralph', password: 'pass123', email:'sel3@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 1},
+    //default user
+    {id: 4, name:'Sri', password: 'pass123', email:'user1@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 0},
+    {id: 5, name:'Ram', password: 'pass123', email:'user2@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 0}
 ]
 
 //export var currentUser = null;

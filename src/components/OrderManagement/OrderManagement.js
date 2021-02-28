@@ -69,9 +69,19 @@ function OrderManagement() {
         return formattedDate
     }
 
+    function searchHandler(value) {
+        let searchArray = []
+        for(let i=0; i < Data.orders.length; i++) {
+            if(Data.orders[i].userEmail.toLowerCase().includes(value.toLowerCase())) {
+                searchArray.push(Data.orders[i])
+            }            
+        }
+        setOrders(searchArray)
+    }
+
     return(
         <div>
-            <TabBar isSearchHide={true}/>
+            <TabBar isSearchHide={false} searchHandler={searchHandler}/>
             <div className={Style.root}>
                 <SideBar activeTab={3}/>
                 <div className={Style.container}>

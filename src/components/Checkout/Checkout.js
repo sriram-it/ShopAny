@@ -8,6 +8,9 @@ function Checkout({match}) {
     let navfrom = match.params.navfrom
 
     const placeOrder = function() {
+        let futureDeliveryDate = new Date()
+        futureDeliveryDate.setDate(futureDeliveryDate.getDate() + 10)
+
         console.log(navfrom)
         if(cartId != null && navfrom == 1) {
             let cartObject = getObject(cartId, Data.cart)
@@ -17,10 +20,14 @@ function Checkout({match}) {
             if(Data.orders.length > 0) {
                 orderId = Data.orders[Data.orders.length-1].id + 1
             } 
-            Data.orders.push({id: orderId, userId: currentUserId, userName: Data.currentUser[0].name, userEmail: Data.currentUser[0].email , productId: cartObject.productId, productName: cartObject.productName, productPrice: cartObject.productPrice, categoryId: productInfo.categoryId, sellerId: cartObject.sellerId, sellerName: cartObject.sellerName, sellerCompanyName: cartObject.sellerCompanyName, status: 1, placedDate: new Date(), deliveryDate: new Date()})
+            Data.orders.push({id: orderId, userId: currentUserId, userName: Data.currentUser[0].name, userEmail: Data.currentUser[0].email , productId: cartObject.productId, productName: cartObject.productName, productPrice: cartObject.productPrice, categoryId: productInfo.categoryId, sellerId: cartObject.sellerId, sellerName: cartObject.sellerName, sellerCompanyName: cartObject.sellerCompanyName, status: 1, placedDate: new Date(), deliveryDate: futureDeliveryDate})
+            
+            let index = getIndex(cartId, Data.cart)
+            Data.cart.splice(index, 1)
         } else if(cartId != null && navfrom == 0) {
             let cartIds = cartId.split('~')
             for(let i=0; i< cartIds.length-1; i++) {
+                console.log(Data.cart)
                 let cartObject = getObject(cartIds[i], Data.cart)
                 let productInfo = getObject(cartObject.productId, Data.products)
                 let currentUserId = parseInt(Data.currentUser[0].id)
@@ -28,7 +35,10 @@ function Checkout({match}) {
                 if(Data.orders.length > 0) {
                     orderId = Data.orders[Data.orders.length-1].id + 1
                 } 
-                Data.orders.push({id: orderId, userId: currentUserId, userName: Data.currentUser[0].name, userEmail: Data.currentUser[0].email , productId: cartObject.productId, productName: cartObject.productName, productPrice: cartObject.productPrice, categoryId: productInfo.categoryId, sellerId: cartObject.sellerId, sellerName: cartObject.sellerName, sellerCompanyName: cartObject.sellerCompanyName, status: 1, placedDate: new Date(), deliveryDate: new Date()})
+                Data.orders.push({id: orderId, userId: currentUserId, userName: Data.currentUser[0].name, userEmail: Data.currentUser[0].email , productId: cartObject.productId, productName: cartObject.productName, productPrice: cartObject.productPrice, categoryId: productInfo.categoryId, sellerId: cartObject.sellerId, sellerName: cartObject.sellerName, sellerCompanyName: cartObject.sellerCompanyName, status: 1, placedDate: new Date(), deliveryDate: futureDeliveryDate})
+                
+                let index = getIndex(cartIds[i], Data.cart)
+                Data.cart.splice(index, 1)
             }
         }
     }
@@ -42,6 +52,16 @@ function Checkout({match}) {
         return null
     }
 
+    function getIndex(id, objects){
+        let index = -1
+        for(let i = 0; i < objects.length; i++) {
+            if(objects[i].id == id) {
+                index = i
+                break
+            }
+        }
+        return index
+    }
 
     return(
         <div>

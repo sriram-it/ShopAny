@@ -116,11 +116,11 @@ function Category() {
                     </div>
                 </div>
             </div>
-            <Modal isOpen={isModalOpen} className={Style.modal} style={{overlay:{backgroundColor:'grey', opacity: 0.95}}}>
+            <Modal isOpen={isModalOpen} className={Style.modal} style={{overlay:{backgroundColor:'grey', opacity: 0.95, position: 'fixed', zIndex: 2}}}>
                 <div className={Style.modalContainer}>
                     <h2 className={Style.modalHeader}>Add Category</h2>
                     <div className={Style.modalBody}>
-                        <input type="textbox" placeholder="Enter Category Name" value={newCategory.name} onChange={(event)=>{setNewCategory({id:newCategory.id, name: event.target.value})}}/>
+                        <input type="textbox" className={Style.fields} placeholder="Enter Category Name" value={newCategory.name} onChange={(event)=>{setNewCategory({id:newCategory.id, name: event.target.value})}}/>
                     </div>
                     <div className={Style.modalFooter}>
                         <center>

@@ -52,8 +52,8 @@ function Order(){
                                 <div>
                                     <p className={Style.fields}>{`Product Name: ${order.productName}`}</p>
                                     <p className={Style.fields}>{`Product Price: $${parseFloat(order.productPrice).toFixed(2)}`}</p>
-                                    <p className={Style.fields}>{`Customer Name: ${order.userName}`}</p>
-                                    <p className={Style.fields}>{`Customer Email: ${order.userEmail}`}</p>
+                                    <p className={Style.fields}>{`Seller Name: ${order.sellerName}`}</p>
+                                    <p className={Style.fields}>{`Seller Company Name: ${order.sellerCompanyName}`}</p>
                                 </div>
                                 <div>
                                     <p className={Style.fields}>{`Order Id: ${order.id}`}</p>

@@ -132,7 +132,7 @@ function ProductManagement() {
                         })
                     }
                     </div>
-                    <Modal isOpen={isModalOpen} className={Style.modal} style={{overlay:{backgroundColor:'grey', opacity: 0.95}}}>
+                    <Modal isOpen={isModalOpen} className={Style.modal} style={{overlay:{backgroundColor:'grey', opacity: 0.95, position: 'fixed', zIndex: 2}}}>
                         <div className={Style.modalContainer}>
                             <h2 className={Style.modalHeader}>Add Product</h2>
                             <div className={Style.modalBody}>

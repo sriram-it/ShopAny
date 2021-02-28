@@ -90,3 +90,10 @@
     flex-direction: column;
     justify-content: space-around; */
 }
+
+.fields{
+    width: 70%;
+    margin: 9px;
+    padding: 10px;
+    border: 1px solid black;
+}

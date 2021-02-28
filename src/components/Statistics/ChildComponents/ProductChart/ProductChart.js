@@ -81,7 +81,7 @@ function ProductChart () {
       }
     }
     for (var i = 0; i < Data.orders.length; i++) {
-      if (Data.orders[i].categoryId == value) {
+      if ((Data.orders[i].sellerId == Data.currentUser[0].id) && (Data.orders[i].categoryId == value)) {
         let productName = Data.orders[i].productName;
         let deliveryDate = new Date(Data.orders[i].deliveryDate);
         if (deliveryDate.getTime () > time.getTime ()) {

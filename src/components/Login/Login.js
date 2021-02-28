@@ -110,11 +110,13 @@ function Login() {
     const onLogin = () => {
       var userObject = getObject(userNameNode.current.value, Data.users)
       if(userObject.password == passNode.current.value) {
+        console.log(Data.currentUser)
         Data.currentUser.splice(0, Data.currentUser.length, userObject)
+        console.log(Data.currentUser)
         if(userObject.userType == 0) {
           history.replace(`/product`)
         } else if (userObject.userType == 1) {
-          history.replace(`/category`)
+          history.replace(`/statistics`)
         }
       }
     }
