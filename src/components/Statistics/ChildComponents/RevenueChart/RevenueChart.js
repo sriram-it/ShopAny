@@ -76,10 +76,10 @@ function RevenueChart () {
       if ((Data.orders[i].sellerId == Data.currentUser[0].id) && (Data.orders[i].categoryId == value)) {
         let productName = Data.orders[i].productName;
         let deliveryDate = new Date(Data.orders[i].deliveryDate);
-        let productPrice = Data.orders[i].productPrice;
+        let productPrice = parseFloat(Data.orders[i].productPrice);
         if (deliveryDate.getTime () > time.getTime ()) {
           if (productMap.has (productName)) {
-            productMap.set (productName, productMap.get (productName) + productPrice);
+            productMap.set (productName, parseFloat(productMap.get (productName)) + productPrice);
           } else {
             productMap.set (productName, productPrice);
           }
@@ -179,8 +179,8 @@ function RevenueChart () {
             name="time"
             onChange={event => TimeFilter (event.target.value)}
           >
-            <option value={1}>Last Week</option>
-            <option value={2}>Last Month</option>
+            <option value={1}>Week</option>
+            <option value={2}>Month</option>
             <option value={3}>All Time</option>
           </select>
         </div>

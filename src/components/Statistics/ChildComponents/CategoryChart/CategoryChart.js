@@ -91,8 +91,8 @@ function CategoryChart () {
             onChange={event => TimeFilter (event.target.value)}
             className={Style.selCategory}
           >
-            <option value={1}>Last Week</option>
-            <option value={2}>Last Month</option>
+            <option value={1}>Week</option>
+            <option value={2}>Month</option>
             <option value={3}>All Time</option>
           </select>
         </div>

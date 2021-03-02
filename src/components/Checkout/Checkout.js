@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TabBar from '../TabBar/TabBar'
 import * as Data from '../data/data'
 import Style from '../Checkout/Checkout.module.css'
+import Modal from 'react-modal'
+
 
 function Checkout({match}) {
     let cartId = match.params.cartId
     let navfrom = match.params.navfrom
+    let [isModalOpen ,setModelOpen] = useState(false)
+
 
     const placeOrder = function() {
         let futureDeliveryDate = new Date()
@@ -24,6 +28,7 @@ function Checkout({match}) {
             
             let index = getIndex(cartId, Data.cart)
             Data.cart.splice(index, 1)
+            setModelOpen(true)
         } else if(cartId != null && navfrom == 0) {
             let cartIds = cartId.split('~')
             for(let i=0; i< cartIds.length-1; i++) {
@@ -40,6 +45,7 @@ function Checkout({match}) {
                 let index = getIndex(cartIds[i], Data.cart)
                 Data.cart.splice(index, 1)
             }
+            setModelOpen(true)
         }
     }
 
@@ -65,30 +71,43 @@ function Checkout({match}) {
 
     return(
         <div>
-            <TabBar isSearchHide={true}/>
-            <h1 className={Style.title}>Delivery Details</h1>
-            <div className={Style.rootContainer}>
-                <center>
-                <h2>Enter your name and address</h2>
-                <input type="textbox" placeholder="First Name" className={Style.fullWidth}/>
-                <input type="textbox" placeholder="Last Name" className={Style.fullWidth}/>
-                <input type="textbox" placeholder="Street Address" className={Style.fullWidth}/>
-                <input type="textbox" placeholder="Apt or Suite (optional)" className={Style.fullWidth}/>
-                <input type="textbox" placeholder="Town/City" className={Style.fullWidth}/>
-                <div>
-                    <input type="textbox" placeholder="Province" className={Style.halfWidth}/>
-                    <input type="textbox" placeholder="Postal Code" className={Style.halfWidth}/>
+            <div>
+                <TabBar isSearchHide={true}/>
+                <h1 className={Style.title}>Delivery Details</h1>
+                <div className={Style.rootContainer}>
+                    <center>
+                    <h2>Enter your name and address</h2>
+                    <input type="textbox" placeholder="First Name" className={Style.fullWidth}/>
+                    <input type="textbox" placeholder="Last Name" className={Style.fullWidth}/>
+                    <input type="textbox" placeholder="Street Address" className={Style.fullWidth}/>
+                    <input type="textbox" placeholder="Apt or Suite (optional)" className={Style.fullWidth}/>
+                    <input type="textbox" placeholder="Town/City" className={Style.fullWidth}/>
+                    <div>
+                        <input type="textbox" placeholder="Province" className={Style.halfWidth}/>
+                        <input type="textbox" placeholder="Postal Code" className={Style.halfWidth}/>
+                    </div>
+                    <input type="textbox" placeholder="Country/Region" className={Style.fullWidth}/>
+                    <h2 className={Style.sectionStart}>Contact information</h2>
+                    <input type="textbox" placeholder="Email Address" className={Style.fullWidth}/>
+                    <input type="textbox" placeholder="Area Code" className={Style.fullWidth}/>
+                    <input type="textbox" placeholder="Mobile Phone Number" className={Style.fullWidth}/>
+                    <div className={Style.sectionStart}>
+                        <button id={Style.buttonOrder} onClick={()=>placeOrder()}>Place Order</button>
+                    </div>
+                    </center>
                 </div>
-                <input type="textbox" placeholder="Country/Region" className={Style.fullWidth}/>
-                <h2 className={Style.sectionStart}>Contact information</h2>
-                <input type="textbox" placeholder="Email Address" className={Style.fullWidth}/>
-                <input type="textbox" placeholder="Area Code" className={Style.fullWidth}/>
-                <input type="textbox" placeholder="Mobile Phone Number" className={Style.fullWidth}/>
-                <div className={Style.sectionStart}>
-                    <button id={Style.buttonOrder} onClick={()=>placeOrder()}>Place Order</button>
-                </div>
-                </center>
             </div>
+            <Modal isOpen={isModalOpen} className="modal" style={{overlay:{backgroundColor:'grey', opacity: 0.95}}}>
+                <div class="root">
+                    <div className="modal-header">
+                        <p>Message</p>
+                    </div>
+                    <div className="model-body">Ordered Successfully.</div>
+                    <div className="modal-footer">
+                        <button onClick={()=>setModelOpen(false)}>Close</button>
+                    </div>
+                </div> 
+            </Modal>
         </div>
     )
 }

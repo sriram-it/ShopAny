@@ -56,7 +56,14 @@ export var sellers = [
 export var cart = []
 
 //{id: orderId, productId: productInfo.id, productName: productInfo.name, productPrice: productInfo.price, sellerName: sellerDetails.name, sellerCompanyName: sellerDetails.companyName, status: 0 || 1, placedDate: new Date(), DeliveryDate: new Date()}
-export var orders = []
+let futureDeliveryDate = new Date()
+futureDeliveryDate.setDate(futureDeliveryDate.getDate() + 10)
+export var orders = [
+    {id: 1, userId: 4, userName: 'Sri', userEmail: 'user1@abc.com' , productId: 3, productName: 'Acer Aspire Desktop', productPrice: '239.99', categoryId: 1, sellerId: 1, sellerName: 'Mark', sellerCompanyName: 'Marks Shoppers', status: 2, placedDate: new Date(), deliveryDate: futureDeliveryDate},
+    {id: 2, userId: 4, userName: 'Sri', userEmail: 'user1@abc.com' , productId: 4, productName: 'HP DeskJet Plus', productPrice: '115.50', categoryId: 1, sellerId: 1, sellerName: 'Mark', sellerCompanyName: 'Marks Shoppers', status: 4, placedDate: new Date('2020/5/30'), deliveryDate: new Date('2020/6/12')},
+    {id: 3, userId: 4, userName: 'Sri', userEmail: 'user1@abc.com' , productId: 14, productName: 'Hamilton Sandwich Maker', productPrice: '60.82', categoryId: 3, sellerId: 1, sellerName: 'Mark', sellerCompanyName: 'Marks Shoppers', status: 4, placedDate: new Date('2021/2/10'), deliveryDate: new Date('2021/2/13')},
+    {id: 4, userId: 4, userName: 'Sri', userEmail: 'user1@abc.com' , productId: 18, productName: 'OMORC Sports Water Bottle', productPrice: '19.99', categoryId: 4, sellerId: 1, sellerName: 'Mark', sellerCompanyName: 'Marks Shoppers', status: 4, placedDate: new Date('2021/2/14'), deliveryDate: new Date('2021/2/18')}
+]
 
 export var users = [
     {id: 1, name:'Mark', password: 'pass123', email:'sel1@abc.com', phoneNumber:9876543210, address:'asdsakdhaskhdkjahs', userType: 1},

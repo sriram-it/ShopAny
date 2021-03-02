@@ -28,8 +28,13 @@ function TabBar(props) {
                 <input type="textbox"  style={props.isSearchHide  ? {display: 'none'} : {display: 'block'}} placeholder={ Data.currentUser[0].userType == 0 ? "Enter the product name to find" : "Enter the customer email to find"} onChange={(event) => props.searchHandler(event.target.value)}></input>
             </div>
             <div className={Style.actions}>
-                <h2><Link to="/cart"><FiShoppingBag id={Style.cartIcon}></FiShoppingBag></Link></h2>
-                <h2><Link to="/order"><RiFileList2Line id={Style.orderIcon}></RiFileList2Line></Link></h2>
+                {
+                    Data.currentUser[0].userType == 0 ? (
+                        <>
+                            <h2><Link to="/cart"><FiShoppingBag id={Style.cartIcon}></FiShoppingBag></Link></h2>
+                            <h2><Link to="/order"><RiFileList2Line id={Style.orderIcon}></RiFileList2Line></Link></h2>
+                        </>) : (<div></div>)
+                }
                 <Link to="/"><button className={Style.logout}>Logout</button></Link>
             </div>
         </div>

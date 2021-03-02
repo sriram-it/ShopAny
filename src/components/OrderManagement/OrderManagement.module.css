@@ -68,6 +68,7 @@
 .fields{
     width: 50%;
     margin: 9px;
+    margin-bottom: 10px;
     padding: 10px;
     border: 1px solid black;
 }
@@ -104,4 +105,8 @@
     /* display: flex;
     flex-direction: column;
     justify-content: space-around; */
+}
+
+.formField{
+    margin-bottom: 10px;
 }

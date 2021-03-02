@@ -3,6 +3,8 @@ import './Login.css';
 import {useSpring, animated} from 'react-spring';
 import * as Data from '../data/data'
 import {useHistory} from 'react-router-dom'
+import Modal from 'react-modal'
+
 
 
 
@@ -11,6 +13,8 @@ function Login() {
 
   const [registrationFormStatus, setRegistrationFormStatus] = useState(false);
   const [userType, setUserType] = useState(0)
+  let [isModalOpen ,setModelOpen] = useState(false)
+
   const nameNode = useRef()
   const emailNode = useRef()
   const addressNode = useRef()
@@ -85,6 +89,7 @@ function Login() {
       if(userType == 1) {
         createSeller()
       }
+      setModelOpen(true)
     }
 
     const createSeller = () => {
@@ -177,16 +182,28 @@ function Login() {
 
   return (
     <div className="login-register-wrapper">
-      <div className="nav-buttons">
-        <animated.button onClick={loginClicked} id="loginBtn" className="buttons" style={loginBtnProps}>Login</animated.button>
-        <animated.button onClick={registerClicked} id="registerBtn" className="buttons" style={registerBtnProps}>Register</animated.button>
-      </div>
-      <div className="form-group">
-        <animated.div  id='loginform' className="forms" style={loginProps}><LoginForm/></animated.div> 
-        <animated.div  id='registerform' className="forms" style={registerProps}><RegisterForm/></animated.div>
-      </div>
+      <div>
+        <div className="nav-buttons">
+          <animated.button onClick={loginClicked} id="loginBtn" className="buttons" style={loginBtnProps}>Login</animated.button>
+          <animated.button onClick={registerClicked} id="registerBtn" className="buttons" style={registerBtnProps}>Register</animated.button>
+        </div>
+        <div className="form-group">
+          <animated.div  id='loginform' className="forms" style={loginProps}><LoginForm/></animated.div> 
+          <animated.div  id='registerform' className="forms" style={registerProps}><RegisterForm/></animated.div>
+        </div>
       {/* <animated.div className="forgot-panel" style={loginProps}><a href="www.google.com" >Forgot password?</a></animated.div> */}
-      
+      </div>
+      <Modal isOpen={isModalOpen} className="modal" style={{overlay:{backgroundColor:'grey', opacity: 0.95}}}>
+          <div class="root">
+              <div className="modal-header">
+                <p>Message</p>
+              </div>
+              <div className="model-body">Regiseterd Successfully.</div>
+              <div className="modal-footer">
+                  <button onClick={()=>setModelOpen(false)}>Close</button>
+              </div>
+          </div> 
+      </Modal>
     </div>
   );
 }

@@ -72,7 +72,7 @@ function OrderManagement() {
     function searchHandler(value) {
         let searchArray = []
         for(let i=0; i < Data.orders.length; i++) {
-            if(Data.orders[i].userEmail.toLowerCase().includes(value.toLowerCase())) {
+            if( (Data.orders[i].sellerId == Data.currentUser[0].id) && (Data.orders[i].userEmail.toLowerCase().includes(value.toLowerCase()))) {
                 searchArray.push(Data.orders[i])
             }            
         }
@@ -99,23 +99,23 @@ function OrderManagement() {
                                             <img src={`/images/${order.productId}.jpg`} width="200px" height="200px"></img>
                                         </div>
                                         <div>
-                                            <p>{`Product Name: ${order.productName}`}</p>
-                                            <p>{`Product Price: $   ${parseFloat(order.productPrice).toFixed(2)}`}</p>
-                                            <p>{`Customer Name: ${order.userName}`}</p>
-                                            <p>{`Customer Email: ${order.userEmail}`}</p>
+                                            <p className={Style.formField}>{`Product Name: ${order.productName}`}</p>
+                                            <p className={Style.formField}>{`Product Price: $${parseFloat(order.productPrice).toFixed(2)}`}</p>
+                                            <p className={Style.formField}>{`Customer Name: ${order.userName}`}</p>
+                                            <p className={Style.formField}>{`Customer Email: ${order.userEmail}`}</p>
                                         </div>
                                         <div>
-                                            <p>{`Order Id: ${order.id}`}</p>
-                                            <p>{`Status: ${Data.orderStatus[order.status-1].name}`}</p>
-                                            <p>{`Placed Date: ${formatDate(order.placedDate)}`}</p>
-                                            <p>{`Delivery Date: ${formatDate(order.deliveryDate)}`}</p>
+                                            <p className={Style.formField}>{`Order Id: ${order.id}`}</p>
+                                            <p className={Style.formField} style={{color:'green', fontWeight: 650}}>{`Status: ${Data.orderStatus[order.status-1].name}`}</p>
+                                            <p className={Style.formField}>{`Placed Date: ${formatDate(order.placedDate)}`}</p>
+                                            <p className={Style.formField} style={{color:'blue', fontWeight: 650}}>{`Delivery Date: ${formatDate(order.deliveryDate)}`}</p>
                                         </div>
                                         {/* <p>{order.productName}</p> */}
                                         <div className={Style.listActions}>
                                             <p><AiOutlineEdit style={{marginLeft:'40px'}}onClick={()=>onEdit(order)}/></p>
                                         </div>
                                     </div>  
-                                    <Modal isOpen={isModalOpen} className={Style.modal} style={{overlay:{backgroundColor:'grey', opacity: 0.95}}}>
+                                    <Modal isOpen={isModalOpen} className={Style.modal} style={{overlay:{backgroundColor:'grey', opacity: 0.95, position: 'fixed', zIndex: 2}}}>
                                         <div className={Style.modalContainer}>
                                             <h2 className={Style.modalHeader}>Update Order</h2>
                                             <div className={Style.modalBody}>

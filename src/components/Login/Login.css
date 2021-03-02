@@ -164,3 +164,44 @@ html,body, body * {
 #loginBtn, #registerBtn {
   transition: all .2s ease;
 }
+
+.modal{
+  width: 500px;
+  height: 160px;
+  background-color: white;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border:none;
+}
+
+.modal-header{
+  width: 100%;
+  padding: 2%;
+  background-color: #5AB568;
+  text-align: center;
+  color: white;
+}
+
+/*.modal-body{
+  text-align: center;
+
+} */
+
+.root{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.modal-footer button{
+  width: 50px;
+  height: 30px;
+  background-color: #5AB568;
+  color: white;
+  border: none;
+  margin: 10px 30px;
+}
